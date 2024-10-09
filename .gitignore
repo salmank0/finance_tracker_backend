@@ -1,0 +1,70 @@
+# Node.js dependencies
+/node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# Environment variables
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+.pnpm-debug.log*
+debug.log
+error.log
+
+# Build directories
+/dist
+/build
+/.next
+
+# Coverage directory
+coverage
+
+# Docker files
+docker-compose.override.yml
+docker-compose.yml
+.dockerignore
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Optional NPM cache directory
+.npm
+
+# PM2 Logs
+.pm2
+
+# Sequelize migration files (optional, if generated in the build process)
+sequelize-cli/.sequelizerc
+
+# Ignore log files
+logs
+*.log
+
+# Ignore database setup
+dump.rdb
