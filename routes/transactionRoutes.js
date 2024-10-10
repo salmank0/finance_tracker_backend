@@ -10,6 +10,7 @@ exports.plugin = {
         path: "/transactions",
         options: {
           auth: "jwt",
+          tags: ["api", "transaction"],
           description: "Get all transactions",
         },
         handler: transactionController.getTransactions,
@@ -19,6 +20,7 @@ exports.plugin = {
         path: "/transactions",
         options: {
           auth: "jwt",
+          tags: ["api", "transaction"],
           description: "Add a new transaction",
           validate: {
             payload: transactionSchema,
@@ -37,6 +39,7 @@ exports.plugin = {
         path: "/transactions/{id}",
         options: {
           auth: "jwt",
+          tags: ["api", "transaction"],
           description: "Update a transaction",
           validate: {
             payload: transactionSchema,
@@ -55,6 +58,7 @@ exports.plugin = {
         path: "/transactions/{id}",
         options: {
           auth: "jwt",
+          tags: ["api", "transaction"],
           description: "Delete a transaction",
         },
         handler: transactionController.deleteTransaction,

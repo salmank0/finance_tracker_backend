@@ -20,6 +20,4 @@ RUN npm install -g nodemon
 EXPOSE 4000
 
 # Start the application
-CMD ["npm","run", "db:create"]
-CMD ["npm", "run", "migrate"]
-CMD ["npm", "run", "dev"]
+CMD ["sh", "-c", "npm run create-db && npm run migrate && npm run start"]

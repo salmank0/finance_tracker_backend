@@ -4,6 +4,12 @@
 
 The purpose of this backend service is to provide a robust API for a Personal Finance Tracking Application. This service allows users to register, log in, and manage their financial transactions, including adding, editing, and deleting transactions. The backend ensures secure authentication and authorization of users through JSON Web Tokens (JWT) and handles all interactions with the MySQL database using Sequelize as the ORM.
 
+[Docker Hub Image](https://hub.docker.com/r/salmank0/finance_tracker/tags)
+
+```bash
+docker pull salmank0/finance_tracker:latest
+```
+
 ## Architecture
 
 The backend is built using Hapi.js, a powerful framework for building applications and services in Node.js. The architecture follows the Model-View-Controller (MVC) pattern, promoting separation of concerns, and is organized into the following main components:
