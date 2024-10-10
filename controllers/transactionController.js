@@ -4,9 +4,8 @@ const sendResponse = require("../utils/sendResponse");
 
 exports.createTransaction = async (request, h) => {
   try {
-    // Use userId from JWT token instead of the request payload
-    const userId = request.auth.credentials.id;
-    const { type, amount } = request.payload;
+    const userId = request.auth.credentials.id; // Get user ID from JWT
+    const { type, amount } = request.payload; // Extract type and amount
 
     // Create a transaction associated with the logged-in user
     const transaction = await Transaction.create({ type, amount, userId });
@@ -19,7 +18,7 @@ exports.createTransaction = async (request, h) => {
       statusCodes.CREATED
     );
   } catch (error) {
-    console.log(error);
+    console.error(error); // Log error for debugging
     return sendResponse(
       h,
       false,
@@ -32,8 +31,7 @@ exports.createTransaction = async (request, h) => {
 
 exports.getTransactions = async (request, h) => {
   try {
-    // Fetch transactions for the logged-in user only
-    const userId = request.auth.credentials.id;
+    const userId = request.auth.credentials.id; // Get user ID from JWT
     const transactions = await Transaction.findAll({ where: { userId } });
 
     return sendResponse(
@@ -44,7 +42,7 @@ exports.getTransactions = async (request, h) => {
       statusCodes.OK
     );
   } catch (error) {
-    console.log(error);
+    console.error(error); // Log error for debugging
     return sendResponse(
       h,
       false,
@@ -61,7 +59,6 @@ exports.updateTransaction = async (request, h) => {
     const { id } = request.params;
     const { type, amount } = request.payload;
 
-    // Find transaction belonging to the user
     const transaction = await Transaction.findOne({ where: { id, userId } });
 
     if (!transaction) {
@@ -87,7 +84,7 @@ exports.updateTransaction = async (request, h) => {
       statusCodes.OK
     );
   } catch (error) {
-    console.log(error);
+    console.error(error); // Log error for debugging
     return sendResponse(
       h,
       false,
@@ -103,7 +100,6 @@ exports.deleteTransaction = async (request, h) => {
     const userId = request.auth.credentials.id;
     const { id } = request.params;
 
-    // Find transaction belonging to the user
     const transaction = await Transaction.findOne({ where: { id, userId } });
 
     if (!transaction) {
@@ -116,7 +112,6 @@ exports.deleteTransaction = async (request, h) => {
       );
     }
 
-    // Delete the transaction
     await transaction.destroy();
 
     return sendResponse(
@@ -127,7 +122,7 @@ exports.deleteTransaction = async (request, h) => {
       statusCodes.OK
     );
   } catch (error) {
-    console.log(error);
+    console.error(error); // Log error for debugging
     return sendResponse(
       h,
       false,

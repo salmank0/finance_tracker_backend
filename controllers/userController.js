@@ -82,15 +82,15 @@ exports.login = async (request, h) => {
 exports.getCurrentUser = async (request, h) => {
   try {
     const user = await User.findByPk(request.auth.credentials.id, {
-      attributes: { exclude: ["password"] }, // Exclude the password from the returned data
+      attributes: { exclude: ["password"] },
     });
 
     if (!user) {
       return sendResponse(
         h,
-        true,
-        transaction,
-        "User not found!",
+        false,
+        null,
+        "User not found",
         statusCodes.NOT_FOUND
       );
     }
@@ -100,7 +100,7 @@ exports.getCurrentUser = async (request, h) => {
     console.log(error);
     return sendResponse(
       h,
-      true,
+      false,
       null,
       "Internal server error",
       statusCodes.INTERNAL_SERVER_ERROR

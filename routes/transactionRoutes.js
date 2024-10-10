@@ -20,6 +20,15 @@ exports.plugin = {
         options: {
           auth: "jwt",
           description: "Add a new transaction",
+          validate: {
+            payload: transactionSchema,
+            failAction: (request, h, err) => {
+              return h
+                .response({ status: false, message: err.message })
+                .code(400)
+                .takeover();
+            },
+          },
         },
         handler: transactionController.createTransaction,
       },
@@ -29,6 +38,15 @@ exports.plugin = {
         options: {
           auth: "jwt",
           description: "Update a transaction",
+          validate: {
+            payload: transactionSchema,
+            failAction: (request, h, err) => {
+              return h
+                .response({ status: false, message: err.message })
+                .code(400)
+                .takeover();
+            },
+          },
         },
         handler: transactionController.updateTransaction,
       },
