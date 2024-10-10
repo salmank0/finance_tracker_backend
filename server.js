@@ -70,6 +70,19 @@ const init = async () => {
   ]);
 
   // Register routes
+  server.route({
+    method: "GET",
+    path: "/",
+    options: {
+      tags: ["api", "user"],
+      auth: false,
+      description: "Home Route",
+      notes: "Returns a greeting message",
+    },
+    handler: (request, h) => {
+      return "Hello World! welcome to the finance tracker API";
+    },
+  });
   await server.register(require("./routes/userRoutes"));
   await server.register(require("./routes/transactionRoutes"));
 
